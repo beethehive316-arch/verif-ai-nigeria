@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSearchParams, Link } from "react-router-dom";
-import { Shield, AlertCircle } from "lucide-react";
+import { Shield, AlertCircle, Brain, TrendingUp, AlertTriangle } from "lucide-react";
 import Header from "@/components/Header";
 import RiskBadge from "@/components/RiskBadge";
 import ReportCard from "@/components/ReportCard";
@@ -90,11 +90,11 @@ const SearchResults = () => {
               </div>
 
               <div className="flex items-center gap-2 p-4 bg-primary/5 border border-primary/20 rounded-lg">
-                <Shield className="h-5 w-5 text-primary flex-shrink-0" />
+                <Brain className="h-5 w-5 text-primary flex-shrink-0" />
                 <div className="text-sm">
-                  <span className="font-semibold text-primary">Verified on Hedera Blockchain</span>
+                  <span className="font-semibold text-primary">AI Analyzed ✓</span>
                   <span className="text-muted-foreground block mt-1">
-                    Transaction ID: 0x7a9b4c...3f2e8d
+                    Verified on Hedera Blockchain • TX: 0x7a9b4c...3f2e8d
                   </span>
                 </div>
               </div>
@@ -105,6 +105,80 @@ const SearchResults = () => {
                   Report This Business
                 </Button>
               </Link>
+            </CardContent>
+          </Card>
+
+          {/* AI Risk Analysis Section */}
+          <Card className="border-2 border-primary/20 bg-primary/5">
+            <CardHeader>
+              <div className="flex items-center gap-2">
+                <Brain className="h-6 w-6 text-primary" />
+                <CardTitle className="text-2xl text-primary">AI Risk Analysis</CardTitle>
+              </div>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              {/* AI Confidence Score */}
+              <div className="p-4 bg-card rounded-lg border border-primary/20">
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-sm font-medium text-muted-foreground">AI Confidence Score</span>
+                  <TrendingUp className="h-4 w-4 text-primary" />
+                </div>
+                <div className="text-3xl font-bold text-primary">87%</div>
+                <p className="text-sm text-muted-foreground mt-1">High confidence this is fraudulent</p>
+              </div>
+
+              {/* Detected Patterns */}
+              <div>
+                <h3 className="text-lg font-semibold mb-3 text-foreground flex items-center gap-2">
+                  <AlertTriangle className="h-5 w-5 text-warning" />
+                  Detected Patterns
+                </h3>
+                <ul className="space-y-2">
+                  <li className="flex items-start gap-2 text-sm">
+                    <span className="text-destructive mt-0.5">•</span>
+                    <span className="text-foreground">Similar phone number reported 8 times in past 30 days</span>
+                  </li>
+                  <li className="flex items-start gap-2 text-sm">
+                    <span className="text-destructive mt-0.5">•</span>
+                    <span className="text-foreground">Account number linked to 3 different business names</span>
+                  </li>
+                  <li className="flex items-start gap-2 text-sm">
+                    <span className="text-destructive mt-0.5">•</span>
+                    <span className="text-foreground">Rapid account creation pattern detected</span>
+                  </li>
+                  <li className="flex items-start gap-2 text-sm">
+                    <span className="text-destructive mt-0.5">•</span>
+                    <span className="text-foreground">High-value transactions with new accounts</span>
+                  </li>
+                  <li className="flex items-start gap-2 text-sm">
+                    <span className="text-destructive mt-0.5">•</span>
+                    <span className="text-foreground">Location mismatch: Business claims Lagos but reports from 5 different states</span>
+                  </li>
+                  <li className="flex items-start gap-2 text-sm">
+                    <span className="text-destructive mt-0.5">•</span>
+                    <span className="text-foreground">Social media account age: Less than 2 weeks old</span>
+                  </li>
+                </ul>
+              </div>
+
+              {/* Fraud Risk Factors */}
+              <div>
+                <h3 className="text-lg font-semibold mb-3 text-foreground">Fraud Risk Factors</h3>
+                <div className="flex flex-wrap gap-2">
+                  <Badge className="bg-destructive/10 text-destructive border-destructive/20 hover:bg-destructive/20">
+                    Multiple Phone Numbers
+                  </Badge>
+                  <Badge className="bg-destructive/10 text-destructive border-destructive/20 hover:bg-destructive/20">
+                    Account Deletion Pattern
+                  </Badge>
+                  <Badge className="bg-warning/10 text-warning border-warning/20 hover:bg-warning/20">
+                    Inconsistent Business Details
+                  </Badge>
+                  <Badge className="bg-destructive/10 text-destructive border-destructive/20 hover:bg-destructive/20">
+                    Rapid Money Movement
+                  </Badge>
+                </div>
+              </div>
             </CardContent>
           </Card>
 

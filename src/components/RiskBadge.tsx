@@ -20,7 +20,7 @@ const RiskBadge = ({ level }: RiskBadgeProps) => {
     low: {
       icon: CheckCircle,
       label: "VERIFIED SAFE",
-      className: "bg-primary text-primary-foreground"
+      className: "bg-success text-success-foreground"
     }
   };
 

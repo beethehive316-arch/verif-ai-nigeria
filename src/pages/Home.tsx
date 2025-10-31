@@ -19,9 +19,10 @@ const Home = () => {
   };
 
   const stats = [
-    { icon: TrendingUp, label: "Reports Filed", value: "15,247" },
-    { icon: DollarSign, label: "Protected", value: "₦2.4B" },
-    { icon: Users, label: "Users", value: "50,000+" }
+    { icon: TrendingUp, label: "Reports Analyzed", value: "15,247" },
+    { icon: DollarSign, label: "Protected by AI", value: "₦2.4B" },
+    { icon: Users, label: "Verified Checks", value: "50,000+" },
+    { icon: TrendingUp, label: "AI Accuracy Rate", value: "98.5%" }
   ];
 
   return (
@@ -37,10 +38,10 @@ const Home = () => {
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center space-y-8">
             <h1 className="text-4xl md:text-6xl font-bold text-foreground leading-tight">
-              Stop Scams Before <span className="text-primary">They Happen</span>
+              Verify Before <span className="text-primary">You Trust</span>
             </h1>
             <p className="text-xl md:text-2xl text-muted-foreground">
-              Check any Nigerian business, vendor, or seller before you send money
+              AI-powered fraud detection for businesses and sellers across Africa
             </p>
             
             {/* Search Bar */}
@@ -80,7 +81,7 @@ const Home = () => {
       {/* Stats Section */}
       <section className="py-16 bg-muted/30">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
             {stats.map((stat, index) => {
               const Icon = stat.icon;
               return (
