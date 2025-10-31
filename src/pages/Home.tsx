@@ -139,6 +139,79 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+      {/* About ClarifAI Database */}
+      <section className="py-16 bg-muted/30">
+        <div className="container mx-auto px-4">
+          <div className="max-w-3xl mx-auto text-center space-y-6">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground">
+              How ClarifAI Builds Its Database
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
+              <Card>
+                <CardContent className="pt-6">
+                  <div className="flex items-start gap-3">
+                    <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 mt-1">
+                      <span className="text-primary font-bold">✓</span>
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-foreground mb-2">Community Reports</h3>
+                      <p className="text-sm text-muted-foreground">
+                        Verified scam reports submitted by users and reviewed by our team
+                      </p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+              <Card>
+                <CardContent className="pt-6">
+                  <div className="flex items-start gap-3">
+                    <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 mt-1">
+                      <span className="text-primary font-bold">✓</span>
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-foreground mb-2">Known Fraud Databases</h3>
+                      <p className="text-sm text-muted-foreground">
+                        Cross-referencing with established fraud databases and watchlists
+                      </p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+              <Card>
+                <CardContent className="pt-6">
+                  <div className="flex items-start gap-3">
+                    <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 mt-1">
+                      <span className="text-primary font-bold">✓</span>
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-foreground mb-2">AI Pattern Analysis</h3>
+                      <p className="text-sm text-muted-foreground">
+                        Machine learning algorithms detect suspicious activities and patterns
+                      </p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+              <Card>
+                <CardContent className="pt-6">
+                  <div className="flex items-start gap-3">
+                    <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 mt-1">
+                      <span className="text-primary font-bold">✓</span>
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-foreground mb-2">Agency Partnerships</h3>
+                      <p className="text-sm text-muted-foreground">
+                        Collaborations with consumer protection agencies and law enforcement
+                      </p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 };

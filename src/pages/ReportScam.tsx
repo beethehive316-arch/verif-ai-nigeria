@@ -35,13 +35,13 @@ const ReportScam = () => {
     }
 
     toast({
-      title: "Report Submitted Successfully",
-      description: "Your report has been recorded on the Hedera blockchain and will help protect others.",
+      title: "Report Submitted for Verification",
+      description: "Our team will analyze and verify this report. Once confirmed, it will be added to our database to protect others.",
     });
 
     setTimeout(() => {
       navigate("/");
-    }, 2000);
+    }, 2500);
   };
 
   const handleChange = (field: string, value: string) => {
@@ -168,11 +168,14 @@ const ReportScam = () => {
                   </div>
                 </div>
 
-                <div className="bg-muted/50 p-4 rounded-lg flex gap-3">
-                  <AlertCircle className="h-5 w-5 text-muted-foreground flex-shrink-0 mt-0.5" />
-                  <p className="text-sm text-muted-foreground">
-                    All reports are reviewed before being published. False reports may result in account suspension. Your report will be permanently stored on the Hedera blockchain.
-                  </p>
+                <div className="bg-primary/5 border border-primary/20 p-4 rounded-lg flex gap-3">
+                  <AlertCircle className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                  <div className="text-sm">
+                    <p className="font-semibold text-primary mb-2">Verification Process</p>
+                    <p className="text-muted-foreground">
+                      All reports are reviewed and verified by our team before being added to our database. False reports may result in account suspension. Once verified, your report will be permanently stored on the Hedera blockchain to protect others.
+                    </p>
+                  </div>
                 </div>
 
                 <Button type="submit" size="lg" className="w-full">

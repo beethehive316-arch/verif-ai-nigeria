@@ -1,23 +1,92 @@
 import { useEffect, useState } from "react";
 import { useSearchParams, Link } from "react-router-dom";
-import { Shield, AlertCircle, Brain, TrendingUp, AlertTriangle } from "lucide-react";
+import { Shield, AlertCircle, Brain, TrendingUp, AlertTriangle, CheckCircle } from "lucide-react";
 import Header from "@/components/Header";
 import RiskBadge from "@/components/RiskBadge";
 import ReportCard from "@/components/ReportCard";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { searchReports, getReportStats, ScamReport } from "@/data/mockReports";
+import { searchReports, getReportStats, ScamReport, searchVerifiedSafe, VerifiedSafe } from "@/data/mockReports";
 
 const SearchResults = () => {
   const [searchParams] = useSearchParams();
   const query = searchParams.get("q") || "";
   const [reports, setReports] = useState<ScamReport[]>([]);
+  const [verifiedSafe, setVerifiedSafe] = useState<VerifiedSafe | null>(null);
 
   useEffect(() => {
     const results = searchReports(query);
     setReports(results);
+    const safeResult = searchVerifiedSafe(query);
+    setVerifiedSafe(safeResult);
   }, [query]);
+
+  // GREEN - Verified Safe
+  if (verifiedSafe) {
+    return (
+      <div className="min-h-screen bg-background">
+        <Header />
+        <div className="container mx-auto px-4 py-8">
+          <div className="max-w-4xl mx-auto space-y-6">
+            <Card className="border-2 border-success bg-success/5">
+              <CardHeader>
+                <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                  <div>
+                    <CardTitle className="text-2xl mb-2">Search Results for</CardTitle>
+                    <p className="text-xl font-mono text-muted-foreground">{query}</p>
+                  </div>
+                  <RiskBadge level="low" />
+                </div>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <div className="text-center p-4 bg-success/10 rounded-lg border border-success/20">
+                    <div className="text-2xl font-bold text-success">
+                      {verifiedSafe.riskScore}%
+                    </div>
+                    <div className="text-sm text-muted-foreground">Risk Score</div>
+                  </div>
+                  <div className="text-center p-4 bg-success/10 rounded-lg border border-success/20">
+                    <div className="text-2xl font-bold text-success">0</div>
+                    <div className="text-sm text-muted-foreground">Fraud Reports</div>
+                  </div>
+                  <div className="text-center p-4 bg-success/10 rounded-lg border border-success/20">
+                    <div className="text-2xl font-bold text-success">✓</div>
+                    <div className="text-sm text-muted-foreground">Verified</div>
+                  </div>
+                </div>
+
+                <div className="p-6 bg-success/10 border-2 border-success rounded-lg">
+                  <h3 className="text-xl font-bold text-success mb-3 flex items-center gap-2">
+                    <CheckCircle className="h-6 w-6" />
+                    Safe to Proceed with Transaction
+                  </h3>
+                  <p className="text-foreground mb-4">{verifiedSafe.description}</p>
+                  <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                    <Badge className="bg-success/20 text-success border-success/30">
+                      {verifiedSafe.platform}
+                    </Badge>
+                    <span>Verified: {new Date(verifiedSafe.verificationDate).toLocaleDateString()}</span>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-2 p-4 bg-primary/5 border border-primary/20 rounded-lg">
+                  <Brain className="h-5 w-5 text-primary flex-shrink-0" />
+                  <div className="text-sm">
+                    <span className="font-semibold text-primary">AI Analyzed ✓</span>
+                    <span className="text-muted-foreground block mt-1">
+                      Verified on Hedera Blockchain • TX: 0x7a9b4c...3f2e8d
+                    </span>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   if (reports.length === 0) {
     return (
@@ -44,6 +113,11 @@ const SearchResults = () => {
   const stats = getReportStats(reports);
   const riskLevel = stats.riskPercentage > 70 ? "high" : stats.riskPercentage > 40 ? "medium" : "low";
 
+  // Determine border and background colors based on risk level
+  const borderColor = riskLevel === "high" ? "border-destructive" : riskLevel === "medium" ? "border-warning" : "border-success";
+  const bgColor = riskLevel === "high" ? "bg-destructive/5" : riskLevel === "medium" ? "bg-warning/5" : "bg-success/5";
+  const statColor = riskLevel === "high" ? "text-destructive" : riskLevel === "medium" ? "text-warning" : "text-success";
+
   return (
     <div className="min-h-screen bg-background">
       <Header />
@@ -51,7 +125,7 @@ const SearchResults = () => {
       <div className="container mx-auto px-4 py-8">
         <div className="max-w-4xl mx-auto space-y-6">
           {/* Risk Overview Card */}
-          <Card className="border-2">
+          <Card className={`border-2 ${borderColor} ${bgColor}`}>
             <CardHeader>
               <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                 <div>
@@ -64,30 +138,55 @@ const SearchResults = () => {
             <CardContent className="space-y-6">
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                 <div className="text-center p-4 bg-muted/50 rounded-lg">
-                  <div className="text-2xl font-bold text-destructive">
+                  <div className={`text-2xl font-bold ${statColor}`}>
                     {stats.totalReports}
                   </div>
                   <div className="text-sm text-muted-foreground">Reports Filed</div>
                 </div>
                 <div className="text-center p-4 bg-muted/50 rounded-lg">
-                  <div className="text-2xl font-bold text-destructive">
+                  <div className={`text-2xl font-bold ${statColor}`}>
                     ₦{(stats.totalAmountLost / 1000).toFixed(1)}K
                   </div>
                   <div className="text-sm text-muted-foreground">Total Lost</div>
                 </div>
                 <div className="text-center p-4 bg-muted/50 rounded-lg">
-                  <div className="text-2xl font-bold text-destructive">
+                  <div className={`text-2xl font-bold ${statColor}`}>
                     {stats.highRiskCount}
                   </div>
                   <div className="text-sm text-muted-foreground">High Risk</div>
                 </div>
                 <div className="text-center p-4 bg-muted/50 rounded-lg">
-                  <div className="text-2xl font-bold text-destructive">
+                  <div className={`text-2xl font-bold ${statColor}`}>
                     {stats.riskPercentage}%
                   </div>
                   <div className="text-sm text-muted-foreground">Risk Level</div>
                 </div>
               </div>
+
+              {/* Risk-specific Warning/Recommendation */}
+              {riskLevel === "high" && (
+                <div className="p-6 bg-destructive/10 border-2 border-destructive rounded-lg">
+                  <h3 className="text-xl font-bold text-destructive mb-3 flex items-center gap-2">
+                    <AlertCircle className="h-6 w-6" />
+                    ⛔ Do NOT Proceed with This Transaction
+                  </h3>
+                  <p className="text-foreground">
+                    This business/individual has multiple fraud reports and known scam patterns. Sending money to this entity carries an extremely high risk of financial loss. We strongly advise against any transactions.
+                  </p>
+                </div>
+              )}
+
+              {riskLevel === "medium" && (
+                <div className="p-6 bg-warning/10 border-2 border-warning rounded-lg">
+                  <h3 className="text-xl font-bold text-warning mb-3 flex items-center gap-2">
+                    <AlertTriangle className="h-6 w-6" />
+                    ⚠️ Recommended: Use Escrow or Verify Further
+                  </h3>
+                  <p className="text-foreground">
+                    This business has some complaints or mixed reviews. While not confirmed as fraudulent, proceed with caution. Consider using escrow services, meeting in person, or requesting additional verification before sending money.
+                  </p>
+                </div>
+              )}
 
               <div className="flex items-center gap-2 p-4 bg-primary/5 border border-primary/20 rounded-lg">
                 <Brain className="h-5 w-5 text-primary flex-shrink-0" />

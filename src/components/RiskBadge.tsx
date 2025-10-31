@@ -9,17 +9,17 @@ const RiskBadge = ({ level }: RiskBadgeProps) => {
   const variants = {
     high: {
       icon: AlertCircle,
-      label: "HIGH RISK",
+      label: "🚨 High Risk - Avoid",
       className: "bg-destructive text-destructive-foreground"
     },
     medium: {
       icon: AlertTriangle,
-      label: "CAUTION",
+      label: "⚠️ Proceed with Caution",
       className: "bg-warning text-warning-foreground"
     },
     low: {
       icon: CheckCircle,
-      label: "VERIFIED SAFE",
+      label: "✅ Verified Safe",
       className: "bg-success text-success-foreground"
     }
   };

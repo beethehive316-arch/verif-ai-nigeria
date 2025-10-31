@@ -9,6 +9,39 @@ export interface ScamReport {
   riskLevel: "high" | "medium" | "low";
 }
 
+export interface VerifiedSafe {
+  id: string;
+  businessName: string;
+  phoneNumber: string;
+  platform: string;
+  riskScore: number;
+  description: string;
+  verificationDate: string;
+}
+
+// GREEN - Verified Safe Businesses (0-30% risk)
+export const verifiedSafeList: VerifiedSafe[] = [
+  {
+    id: "safe-1",
+    businessName: "Jumia Verified Seller",
+    phoneNumber: "08012345678A",
+    platform: "Jumia",
+    riskScore: 5,
+    description: "Verified official Jumia seller with excellent track record. Over 1,000 successful transactions, zero complaints.",
+    verificationDate: "2025-01-15"
+  },
+  {
+    id: "safe-2",
+    businessName: "Konga Official Store",
+    phoneNumber: "09087654321A",
+    platform: "Konga",
+    riskScore: 8,
+    description: "Official Konga merchant with verified business registration. Consistently high ratings and prompt delivery.",
+    verificationDate: "2025-01-10"
+  }
+];
+
+// RED - High Risk Scammers (70-100% risk)
 export const mockReports: ScamReport[] = [
   {
     id: "1",
@@ -159,6 +192,27 @@ export const mockReports: ScamReport[] = [
     description: "Original Toyota parts advertised. Paid via Access Bank account (partial), received fake parts. Seller account terminated after investigation.",
     date: "2025-07-10",
     riskLevel: "high"
+  },
+  // YELLOW - Moderate Risk (31-69% risk)
+  {
+    id: "16",
+    businessName: "New Fashion Vendor",
+    phoneNumber: "08098765432F",
+    platform: "Instagram",
+    amountLost: 35000,
+    description: "New vendor with mixed reviews. Some customers report delayed deliveries (2-3 weeks instead of promised 1 week). Products generally arrive but quality varies. Limited transaction history.",
+    date: "2025-10-20",
+    riskLevel: "medium"
+  },
+  {
+    id: "17",
+    businessName: "Tech Gadgets NG",
+    phoneNumber: "07011223344F",
+    platform: "WhatsApp",
+    amountLost: 42000,
+    description: "Seller has some delayed delivery complaints. Customer service is slow to respond. Some buyers report receiving items after extended wait times. No fraud reports but needs improvement.",
+    date: "2025-10-18",
+    riskLevel: "medium"
   }
 ];
 
@@ -172,6 +226,18 @@ export const searchReports = (query: string): ScamReport[] => {
     report.phoneNumber.includes(query) ||
     report.businessName.toLowerCase().includes(lowercaseQuery)
   );
+};
+
+// Function to search verified safe businesses
+export const searchVerifiedSafe = (query: string): VerifiedSafe | null => {
+  if (!query) return null;
+  
+  const normalizedQuery = query.toLowerCase().trim();
+  
+  return verifiedSafeList.find(business => 
+    business.phoneNumber.toLowerCase().includes(normalizedQuery) ||
+    business.businessName.toLowerCase().includes(normalizedQuery)
+  ) || null;
 };
 
 // Function to get report statistics
