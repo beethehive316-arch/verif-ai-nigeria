@@ -1,5 +1,8 @@
 # ClarifAI - AI-Powered Fraud Detection for Nigeria
 
+## 🌐 Live App
+**Try it now:** https://verif-ai-nigeria.lovable.app
+
 ## Problem
 Nigerians lose ₦5 billion+ to online fraud yearly. No system warns users before sending money to scammers.
 
@@ -13,7 +16,7 @@ ClarifAI uses AI to check phone numbers against fraud database. Returns Green (s
 4. See verified fraud reports on blockchain
 
 ## Tech Stack
-- Frontend: React Native
+- Frontend: React (Lovable.app)
 - Backend: Node.js
 - Blockchain: Hedera HCS
 - AI: Python ML models
@@ -21,14 +24,11 @@ ClarifAI uses AI to check phone numbers against fraud database. Returns Green (s
 ## Hedera Integration
 All fraud reports verified and stored on Hedera Consensus Service for transparency.
 
-## Demo Video
-[YOUR YOUTUBE LINK]
-
-## Pitch Deck
-[YOUR GOOGLE DRIVE LINK]
-
-## Hedera Certificate
-[YOUR CERTIFICATE LINK]
+## 🔗 Links
+- **Live App:** https://verif-ai-nigeria.lovable.app
+- **Demo Video:** [YOUR YOUTUBE LINK]
+- **Pitch Deck:** [YOUR GOOGLE DRIVE LINK]
+- **Hedera Certificate:** [YOUR CERTIFICATE LINK]
 
 ## Contact
-[Your email]
+[honiequome@gmail.com]
