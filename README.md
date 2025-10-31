@@ -26,9 +26,9 @@ All fraud reports verified and stored on Hedera Consensus Service for transparen
 
 ## 🔗 Links
 - **Live App:** https://verif-ai-nigeria.lovable.app
-- **Demo Video:** [YOUR YOUTUBE LINK]
-- **Pitch Deck:** [YOUR GOOGLE DRIVE LINK]
-- **Hedera Certificate:** [YOUR CERTIFICATE LINK]
+- **Demo Video:** [https://drive.google.com/file/d/1GVIeNU9ugVl7WXlGxx7UkGiugGaMc-ax/view?usp=drivesdk]
+- **Pitch Deck:** [https://drive.google.com/file/d/1DVN4xjXHjCFT81iOvsNmop9Fa2usAclg/view?usp=drivesdk]
+- **Hedera Certificate:** [https://drive.google.com/file/d/122bSX9cO4ALnd_aCMqueD1AycV0opICs/view?usp=drivesdk]
 
 ## Contact
 [honiequome@gmail.com]
