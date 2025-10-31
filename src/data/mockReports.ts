@@ -27,7 +27,7 @@ export const verifiedSafeList: VerifiedSafe[] = [
     phoneNumber: "08012345678A",
     platform: "Jumia",
     riskScore: 5,
-    description: "Verified official Jumia seller with excellent track record. Over 1,000 successful transactions, zero complaints.",
+    description: "Verified official Jumia seller with excellent track record. Registered business with verified payment methods. Over 1,000 successful transactions, zero complaints.",
     verificationDate: "2025-01-15"
   },
   {
@@ -36,7 +36,7 @@ export const verifiedSafeList: VerifiedSafe[] = [
     phoneNumber: "09087654321A",
     platform: "Konga",
     riskScore: 8,
-    description: "Official Konga merchant with verified business registration. Consistently high ratings and prompt delivery.",
+    description: "Official Konga merchant with verified business registration. Licensed business with physical location verified. Consistently high ratings and 850+ successful deliveries.",
     verificationDate: "2025-01-10"
   }
 ];
@@ -196,21 +196,21 @@ export const mockReports: ScamReport[] = [
   // YELLOW - Moderate Risk (31-69% risk)
   {
     id: "16",
-    businessName: "New Fashion Vendor",
+    businessName: "BellaHair Luxury",
     phoneNumber: "08098765432F",
     platform: "Instagram",
     amountLost: 35000,
-    description: "New vendor with mixed reviews. Some customers report delayed deliveries (2-3 weeks instead of promised 1 week). Products generally arrive but quality varies. Limited transaction history.",
+    description: "Account only 4 months old with mixed reviews. Some delayed delivery complaints (2 incidents) but issues eventually resolved. Limited transaction history. One customer reported: 'Ordered hair, arrived 2 weeks late but quality was good.'",
     date: "2025-10-20",
     riskLevel: "medium"
   },
   {
     id: "17",
-    businessName: "Tech Gadgets NG",
+    businessName: "QuickDeals NG",
     phoneNumber: "07011223344F",
     platform: "WhatsApp",
     amountLost: 42000,
-    description: "Seller has some delayed delivery complaints. Customer service is slow to respond. Some buyers report receiving items after extended wait times. No fraud reports but needs improvement.",
+    description: "New seller (only 2 months active). 5 reports total: 2 resolved, 3 pending. Wrong items sent occasionally. Mixed customer feedback - some positive experiences, some complaints about inconsistent service.",
     date: "2025-10-18",
     riskLevel: "medium"
   }
